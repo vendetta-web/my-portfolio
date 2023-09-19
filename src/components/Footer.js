@@ -11,9 +11,6 @@ export default function Footer() {
         <a href="https://www.salesforce.com/trailblazer/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
           <i className="fa-brands fa-salesforce text-gray-300 text-2xl mx-2 hover:text-blue-500"></i>
         </a>
-        // <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-        //   <i className="fa-brands fa-youtube text-gray-300 text-2xl mx-2 hover:text-red-700"></i>
-        // </a>
         <a href="https://github.com/vendetta-web" target="_blank" rel="noopener noreferrer">
           <i className="fa-brands fa-github text-gray-300 text-2xl mx-2 hover:text-white"></i>
         </a>
