@@ -11,7 +11,6 @@ export default function Footer() {
         <a href="https://www.salesforce.com/trailblazer/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
           <i className="fa-brands fa-salesforce text-gray-300 text-2xl mx-2 hover:text-blue-500"></i>
         </a>
-<<<<<<< HEAD
         <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
           <i className="fa-brands fa-youtube text-gray-300 text-2xl mx-2 hover:text-red-700"></i>
         </a>
@@ -22,15 +21,6 @@ export default function Footer() {
           <i className="fa-brands fa-linkedin text-gray-300 text-2xl mx-2 hover:text-blue-400"></i>
         </a>
         <a href="https://instagram.com/imdixitsaurabh" target="_blank" rel="noopener noreferrer">
-=======
-        <a href="https://github.com/vendetta-web" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-github text-gray-300 text-2xl mx-2 hover:text-white"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/saurabhdixit2303/" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-linkedin text-gray-300 text-2xl mx-2 hover:text-blue-400"></i>
-        </a>
-        <a href="https://www.instagram.com/imdixitsaurabh/" target="_blank" rel="noopener noreferrer">
->>>>>>> aa1f0692be0f8c27b84eac46dc54cb68576ce344
           <i className="fab fa-instagram-square text-gray-300 text-2xl mx-2 hover:text-pink-500"></i>
         </a>
       </div>
