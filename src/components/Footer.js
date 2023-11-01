@@ -21,8 +21,8 @@ export default function Footer() {
           <i className="fa-brands fa-linkedin text-gray-300 text-2xl mx-2 hover:text-blue-400"></i>
         </a>
         <a href="https://instagram.com/imdixitsaurabh" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-instagram-square text-gray-300 text-2xl mx-2 hover:text-pink-500"></i>
-        </a>
+            <i className="fab fa-instagram text-gray-300 text-2xl mx-2 hover:text-pink-500"></i>
+          </a>
       </div>
     </div>
   </footer>

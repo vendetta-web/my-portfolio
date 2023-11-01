@@ -21,20 +21,20 @@ export default function Navbar() {
           </a>
         </nav>
         <div className="md:ml-auto">
-          <a href="https://instagram.com/imdixitsaurabh" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-instagram text-white mr-3 text-2xl hover:text-pink-500"></i>
-          </a>
-          <a href="https://www.salesforce.com/trailblazer/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-salesforce text-white mr-3 text-2xl hover:text-blue-500"></i>
-          </a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-youtube text-white mr-3 text-2xl hover:text-red-700"></i>
-          </a>
-          <a href="https://github.com/vendetta-web" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-github text-white mr-3  text-2xl hover:text-03042A"></i>
-          </a>
-          <a href="https://linkedin.com/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
-            <i className="fa-brands fa-linkedin text-white mr-3 text-2xl hover:text-blue-400"></i>
+        <a href="https://www.salesforce.com/trailblazer/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
+          <i className="fa-brands fa-salesforce text-gray-300 text-2xl mx-2 hover:text-blue-500"></i>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+          <i className="fa-brands fa-youtube text-gray-300 text-2xl mx-2 hover:text-red-700"></i>
+        </a>
+        <a href="https://github.com/vendetta-web" target="_blank" rel="noopener noreferrer">
+          <i className="fa-brands fa-github text-gray-300 text-2xl mx-2 hover:text-white"></i>
+        </a>
+        <a href="https://linkedin.com/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
+          <i className="fa-brands fa-linkedin text-gray-300 text-2xl mx-2 hover:text-blue-400"></i>
+        </a>
+        <a href="https://instagram.com/imdixitsaurabh" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-instagram text-gray-300 text-2xl mx-2 hover:text-pink-500"></i>
           </a>
         </div>
       </div>
