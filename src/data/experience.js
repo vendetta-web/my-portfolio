@@ -20,7 +20,7 @@ export const experience = [
   },
   {
     id: 3,
-    period: "6/17/2024 - Current",
+    period: "6/17/2024 - 6/19/2025",
     role: "Developer Evangelist - Salesforce",
     company: "Maxify Digital",
     location: "Noida",
