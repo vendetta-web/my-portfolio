@@ -11,7 +11,13 @@ export default function About() {
               <span className="code-dot red"></span>
               <span className="code-dot yellow"></span>
               <span className="code-dot green"></span>
-              <pre>{`function buildIdea(idea) {\n  return {\n    ui: \"clean\",\n    system: \"scalable\",\n    impact: \"real\"\n  };\n}`}</pre>
+              <pre>{`function buildIdea(idea) {
+  return {
+    ui: "clean",
+    system: "scalable",
+    impact: "real"
+  };
+}`}</pre>
             </div>
           </div>
         </div>

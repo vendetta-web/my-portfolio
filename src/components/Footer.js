@@ -1,5 +1,5 @@
 import React from "react";
-import { navigation, personal, socialLinks } from "../data";
+import { personal, socialLinks } from "../data";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
