@@ -1,43 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { navigation, personal } from "../data";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="bg-gray-800 md:sticky top-0 z-10">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a className="title-font font-medium text-white mb-4 md:mb-0">
-          <a href="#about" className="ml-3 text-xl">
-            Vendetta Web
-          </a>
+    <header className={`site-nav ${scrolled ? "site-nav--scrolled" : ""}`}>
+      <div className="section-shell nav-inner">
+        <a href="#home" className="brand" aria-label="Go to home">
+          <span className="brand-mark">{personal.initials}</span>
+          <span className="brand-name">{personal.name}</span>
         </a>
-        <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-          <a href="#projects" className="mr-5 hover:text-white">
-            My Work
-          </a>
-          <a href="#skills" className="mr-5 hover:text-white">
-            Skills
-          </a>
-          <a href="#contact" className="mr-5 hover:text-white">
-            Contact ME
-          </a>
+
+        <button
+          className="mobile-menu-btn"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <i className={`fa-solid ${open ? "fa-xmark" : "fa-bars"}`}></i>
+        </button>
+
+        <nav className={`main-nav ${open ? "main-nav--open" : ""}`} aria-label="Primary navigation">
+          {navigation.map((item) => (
+            <a key={item.target} href={`#${item.target}`} onClick={() => setOpen(false)}>
+              {item.label}
+            </a>
+          ))}
         </nav>
-        <div className="md:ml-auto">
-        <a href="https://www.salesforce.com/trailblazer/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-salesforce text-gray-300 text-2xl mx-2 hover:text-blue-500"></i>
+
+        <a className="nav-cta" href="#contact">
+          Let's Talk <i className="fa-solid fa-arrow-right"></i>
         </a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-youtube text-gray-300 text-2xl mx-2 hover:text-red-700"></i>
-        </a>
-        <a href="https://github.com/vendetta-web" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-github text-gray-300 text-2xl mx-2 hover:text-white"></i>
-        </a>
-        <a href="https://linkedin.com/saurabhdixit2303" target="_blank" rel="noopener noreferrer">
-          <i className="fa-brands fa-linkedin text-gray-300 text-2xl mx-2 hover:text-blue-400"></i>
-        </a>
-        <a href="https://instagram.com/imdixitsaurabh" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-instagram text-gray-300 text-2xl mx-2 hover:text-pink-500"></i>
-          </a>
-        </div>
       </div>
     </header>
-  )
+  );
 }

@@ -1,18 +1,42 @@
-import React from "react";
-import About from "./components/About";
-import Contact from "./components/Contact";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import TechStack from "./components/TechStack";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
-import Skills from "./components/Skills";
+import Learning from "./components/Learning";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main className="text-gray-400 bg-gray-900 body-font">
+    <main>
       <Navbar />
+      <Hero />
       <About />
+      <TechStack />
+      <Experience />
       <Projects />
-      <Skills />
+      <Learning />
       <Contact />
       <Footer />
     </main>
