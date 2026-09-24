@@ -7,7 +7,6 @@ import { socialLinks } from "../data";
 export default function Contact() {
   const form = useRef();
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
   const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
   const userId = process.env.REACT_APP_EMAILJS_USER_ID;
@@ -20,35 +19,21 @@ export default function Contact() {
   const validateEmail = () => {
     if (!validator.isEmail(email)) {
       setEmailError("Invalid email address");
-      return false;
+    } else {
+      setEmailError("");
     }
-    setEmailError("");
-    return true;
   };
 
   const validatePhone = () => {
     if (!validator.isMobilePhone(phone, "any", { strictMode: false })) {
       setPhoneError("Invalid phone number");
-      return false;
+    } else {
+      setPhoneError("");
     }
-    setPhoneError("");
-    return true;
-  };
-
-  const validateForm = () => {
-    const emailValid = validateEmail();
-    const phoneValid = validatePhone();
-    return emailValid && phoneValid;
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
 
     emailjs.sendForm(serviceId, templateId, form.current, userId)
       .then((result) => {
@@ -59,16 +44,6 @@ export default function Contact() {
         setPhone("");
       }, (error) => {
         console.log(error.text);
-        Swal.fire({
-          title: 'Error!',
-          text: 'Failed to send message. Please try again.',
-          icon: 'error',
-          timer: 3000,
-          showConfirmButton: false,
-        });
-      })
-      .finally(() => {
-        setIsSubmitting(false);
       });
   };
 
@@ -155,17 +130,8 @@ export default function Contact() {
             <textarea id="message" name="message" placeholder="Tell me what you're working on..." required />
           </label>
 
-          <button type="submit" disabled={isSubmitting} className="btn btn-primary form-submit">
-            {isSubmitting ? (
-              <>
-                <i className="fa-solid fa-spinner fa-spin" style={{ marginRight: '8px' }}></i>
-                Sending...
-              </>
-            ) : (
-              <>
-                Send Message <i className="fa-solid fa-arrow-right"></i>
-              </>
-            )}
+          <button type="submit" className="btn btn-primary form-submit">
+            Send Message <i className="fa-solid fa-arrow-right"></i>
           </button>
         </form>
       </div>
