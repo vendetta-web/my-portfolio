@@ -7,9 +7,41 @@ import { socialLinks } from "../data";
 export default function Contact() {
   const form = useRef();
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
   const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
   const userId = process.env.REACT_APP_EMAILJS_USER_ID;
+
+ 
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(serviceId, templateId, form.current, userId)
+      .then((result) => {
+        console.log(result.text);
+        setShowSuccessAlert(true);
+        form.current.reset();
+       
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
+ 
+
+  useEffect(() => {
+    if (showSuccessAlert) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Your message has been sent successfully.',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false,
+        onClose: () => setShowSuccessAlert(false),
+      });
+    }
+  }, [showSuccessAlert]);
+
 
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -32,33 +64,15 @@ export default function Contact() {
     }
   };
 
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    emailjs.sendForm(serviceId, templateId, form.current, userId)
-      .then((result) => {
-        console.log(result.text);
-        setShowSuccessAlert(true);
-        form.current.reset();
-        setEmail("");
-        setPhone("");
-      }, (error) => {
-        console.log(error.text);
-      });
-  };
-
-  useEffect(() => {
-    if (showSuccessAlert) {
-      Swal.fire({
-        title: 'Success!',
-        text: 'Your message has been sent successfully.',
-        icon: 'success',
-        timer: 3000,
-        showConfirmButton: false,
-        onClose: () => setShowSuccessAlert(false),
-      });
+    if (validator.isEmail(email) && validator.isMobilePhone(phone, "any", { strictMode: false })) {
+      console.log("Form is valid. Submitting...");
+    } else {
+      validateEmail();
+      validatePhone();
     }
-  }, [showSuccessAlert]);
+  };
 
   return (
     <section id="contact" className="contact-section section-pad">
@@ -74,13 +88,6 @@ export default function Contact() {
           <div className="contact-quote">
             <i className="fa-solid fa-quote-left"></i>
             <p>Good software solves problems.<br />Better software creates opportunities.</p>
-          </div>
-          <div className="social-row contact-socials">
-            {socialLinks.map((link) => (
-              <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
-                <i className={link.icon}></i>
-              </a>
-            ))}
           </div>
         </div>
 
@@ -130,8 +137,17 @@ export default function Contact() {
             <textarea id="message" name="message" placeholder="Tell me what you're working on..." required />
           </label>
 
-          <button type="submit" className="btn btn-primary form-submit">
-            Send Message <i className="fa-solid fa-arrow-right"></i>
+          <button type="submit" disabled={isSubmitting} onClick={sendEmail} onSubmit={handleSubmit} className="btn btn-primary form-submit">
+            {isSubmitting ? (
+              <>
+                <i className="fa-solid fa-spinner fa-spin" style={{ marginRight: '8px' }}></i>
+                Sending...
+              </>
+            ) : (
+              <>
+                Send Message <i className="fa-solid fa-arrow-right"></i>
+              </>
+            )}
           </button>
         </form>
       </div>
