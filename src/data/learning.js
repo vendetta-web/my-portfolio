@@ -90,6 +90,13 @@ export const enterpriseClients = [
     description: "Transforming digital banking experiences with secure, compliant Salesforce implementations.",
     sector: "Financial Services",
   },
+  {
+    id: 11,
+    name: "Udemy",
+    logo: "fa-solid fa-graduation-cap",
+    description: "Empowering global learners and instructors by building scalable Salesforce CRM solutions and automated workflows.",
+    sector: "EdTech & Online Learning",
+  },
 ];
 
 export const certifications = {
