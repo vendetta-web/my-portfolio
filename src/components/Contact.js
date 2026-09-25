@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
 import validator from "validator";
-import { socialLinks } from "../data";
 
 export default function Contact() {
   const form = useRef();
