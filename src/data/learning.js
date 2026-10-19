@@ -101,6 +101,8 @@ export const enterpriseClients = [
 
 export const certifications = {
   salesforce: [
+    "Copado AI",
+    "Copado Data 360",
     "Salesforce Certified Associate",
     "Salesforce Certified Administrator",
     "Salesforce Certified Platform Developer I",
@@ -115,6 +117,7 @@ export const certifications = {
   other: [
     "React.js",
     "Node.js",
+    "Express.js",
     "JavaScript",
     "HTML",
     "CSS",
